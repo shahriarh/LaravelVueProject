@@ -21,19 +21,22 @@
                 <tr>
                   <th>SL</th>
                   <th>Name</th>
+                  <th>Date</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>1</td>
+                <tr v-for="(category, index) in getallCategory" :key="index">
+                  <td>{{ index+1 }}</td>
                   <td>
-                    {{ getallCategory }}
+                    {{ category.cat_name }}
                   </td>
+                  <td>{{ category.created_at |timeformat }}</td>
+                  
                   
                   <td>
                       <a href="">Edit</a>
-                      <a href="">Delete</a>
+                      <a href="" @click.prevent="deletecategory(category.id)">Delete</a>
                   </td>
                 </tr>
                 
@@ -59,15 +62,17 @@
 export default {
     name: "list",
     mounted(){
-
+      return this.$store.dispatch("allCategory")
     },
     computed:{
       getallCategory(){
-       return this.$store.dispatch("allCategory")
+       return this.$store.getters.getCategory
       }
     },
     methods:{
-      
+      deletecategory(id){
+        console.log(id)
+      }
     }
 
 }

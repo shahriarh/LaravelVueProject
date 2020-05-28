@@ -8,6 +8,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+//Support moment js
+import filter from './filter'
+
 //Support vuex
 import Vuex from 'vuex'
 Vue.use(Vuex)
@@ -70,7 +73,7 @@ window.Toast = Toast
 
 const router = new VueRouter({
     routes, // short for `routes: routes`
-    mode:'history'
+    mode:'hash'
   })
 
 /**

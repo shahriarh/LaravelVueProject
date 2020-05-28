@@ -9,12 +9,19 @@ export default {
              return state.category   
         }
     },
-    mutations:{
-
-    },
+    
     actions:{
-        allCategory(state, payload){
-            Axios.get('/')
+        allCategory(context){
+            axios.get('/category')
+            .then((response)=>{
+                context.commit('categories',response.data.categories)
+            })
+        }
+    },
+    mutations:{
+        categories(state,data){
+            return state.category = data
         }
     }
+
 }

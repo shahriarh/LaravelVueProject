@@ -27,4 +27,4 @@ Route::get('post', 'PostController@all_post');
 //category
 
 Route::post('/add-category','CategoryController@add_category');
-Route::post('/category','CategoryController@all_category');
+Route::get('/category','CategoryController@all_category');
